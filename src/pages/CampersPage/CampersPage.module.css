@@ -1,0 +1,14 @@
+.pageWrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.filtersCol {
+  flex: 0 0 280px;
+  min-width: 220px;
+}
+
+.cardsCol {
+  flex: 1;
+}

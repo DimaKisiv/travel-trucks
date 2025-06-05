@@ -1,0 +1,121 @@
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.tabs button {
+  background: #f0f0f0;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 5px 5px 0 0;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.activeTab {
+  background: #fff;
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.featuresTab {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.featuresLeft, .featuresRight {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+.topFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.featureItem {
+  background: #e9ecef;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.detailsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detailsList li {
+  margin-bottom: 0.5rem;
+}
+
+.featuresRight {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.reviewsTab {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.thumbnailsRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.thumbnailImg {
+  width: 292px;
+  height: 312px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #eee;
+  transition: border 0.2s;
+}
+.thumbnailImg:hover {
+  border: 2px solid #007bff;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.rank {
+  font-weight: 500;
+}
+
+.location {
+  color: #555;
+  font-style: italic;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 1.1rem;
+}

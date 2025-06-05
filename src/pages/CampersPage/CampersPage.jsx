@@ -15,6 +15,7 @@ import {
 import { fetchCampers } from '../../redux/operations';
 import CamperFilters from '../../components/CamperFilters/CamperFilters';
 import CampersList from '../../components/CampersList/CampersList';
+import styles from './CampersPage.module.css';
 
 const LIMIT = 10;
 
@@ -53,22 +54,25 @@ const CampersPage = () => {
   };
 
   return (
-    <div>
-      <h2>Campers</h2>
-      <CamperFilters filters={filters} setFilters={handleSetFilters} />
-      {error && <p>Error: {error}</p>}
-      <CampersList campers={campers} status={status} />
-      {hasMore && (
-        <div style={{ textAlign: 'center', margin: '1rem 0' }}>
-          <button
-            className="load-more-btn"
-            onClick={handleLoadMore}
-            disabled={isLoadingMore}
-          >
-            {isLoadingMore ? 'Loading...' : 'Load More'}
-          </button>
-        </div>
-      )}
+    <div className={styles.pageWrapper}>
+      <div className={styles.filtersCol}>
+        <CamperFilters filters={filters} setFilters={handleSetFilters} />
+      </div>
+      <div className={styles.cardsCol}>
+        {error && <p>Error: {error}</p>}
+        <CampersList campers={campers} status={status} />
+        {hasMore && (
+          <div style={{ textAlign: 'center', margin: '1rem 0' }}>
+            <button
+              className="load-more-btn"
+              onClick={handleLoadMore}
+              disabled={isLoadingMore}
+            >
+              {isLoadingMore ? 'Loading...' : 'Load More'}
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
