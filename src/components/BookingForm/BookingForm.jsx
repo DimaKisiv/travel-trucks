@@ -42,7 +42,6 @@ const BookingForm = () => {
     setTouched({ name: true, email: true, bookingDate: true });
     setSubmitted(true);
     if (isValid) {
-      // Here you would send data to backend or show a success message
       alert('Booking submitted!');
       setForm({ name: '', email: '', bookingDate: null, comment: '' });
       setTouched({});
@@ -51,57 +50,55 @@ const BookingForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
-      <h3>Book This Camper</h3>
-      <div className={styles.field}>
-        <label>Name*</label>
+    <div className={styles.formContainer}>
+      <h2 className={styles.formTitle}>Book your campervan now</h2>
+      <p className={styles.formSubtitle}>Stay connected! We are always ready to help you.</p>
+      <form className={styles.form} onSubmit={handleSubmit} noValidate>
         <input
+          className={styles.input}
           type="text"
           name="name"
+          placeholder="Name*"
           value={form.name}
           onChange={handleChange}
           onBlur={handleBlur}
           required
         />
         {touched.name && errors.name && <span className={styles.error}>Name is required</span>}
-      </div>
-      <div className={styles.field}>
-        <label>Email*</label>
         <input
+          className={styles.input}
           type="email"
           name="email"
+          placeholder="Email*"
           value={form.email}
           onChange={handleChange}
           onBlur={handleBlur}
           required
         />
         {touched.email && errors.email && <span className={styles.error}>Valid email is required</span>}
-      </div>
-      <div className={styles.field}>
-        <label>Booking Date*</label>
         <DatePicker
           selected={form.bookingDate}
           onChange={handleDateChange}
           onBlur={() => setTouched((prev) => ({ ...prev, bookingDate: true }))}
           minDate={new Date()}
-          placeholderText="Select a date"
+          placeholderText="Booking date*"
           dateFormat="yyyy-MM-dd"
+          className={styles.input}
           required
         />
         {touched.bookingDate && errors.bookingDate && <span className={styles.error}>Booking date is required</span>}
-      </div>
-      <div className={styles.field}>
-        <label>Comment</label>
         <textarea
+          className={styles.textarea}
           name="comment"
+          placeholder="Comment"
           value={form.comment}
           onChange={handleChange}
           rows={3}
         />
-      </div>
-      <button type="submit" className={styles.submitBtn}>Book Now</button>
-      {submitted && !isValid && <div className={styles.error}>Please fill all required fields correctly.</div>}
-    </form>
+        <button type="submit" className={styles.submitBtn}>Send</button>
+        {submitted && !isValid && <div className={styles.error}>Please fill all required fields correctly.</div>}
+      </form>
+    </div>
   );
 };
 

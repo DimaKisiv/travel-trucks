@@ -8,7 +8,7 @@
 .tabs {
   display: flex;
   gap: 1rem;
-  margin: 0;
+  margin-bottom: 24px;
 }
 
 .tabs button {
@@ -23,6 +23,21 @@
 }
 
 .activeTab {
+  position: relative;
+  color: #e44848;
+}
+
+.activeTab::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -24px;
+  width: 100%;
+  height: 3px;
+  background: #e44848;
+  border-radius: 2px;
 }
 
 .featuresTab {
@@ -31,13 +46,12 @@
   margin-bottom: 2rem;
 }
 
-.featuresLeft,
-.featuresRight {
+.featuresLeft {
   background: #f8f8f8;
   border-radius: 8px;
   padding: 1.5rem;
   flex: 1;
-  min-width: 250px;
+  max-width: 631px;
 }
 
 .topFeatures {
@@ -65,8 +79,11 @@
 }
 
 .featuresRight {
+  border-radius: 8px;
+  flex: 1;
+  max-width: 641px;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
 }
 

@@ -1,48 +1,78 @@
 import React from 'react';
 import styles from './FeaturesBox.module.css';
-
-const FEATURES_TOP = [
-  { label: 'Transmission', key: 'transmission' },
-  { label: 'Engine', key: 'engine' },
-  { label: 'AC', key: 'AC' },
-  { label: 'Bathroom', key: 'bathroom' },
-  { label: 'Kitchen', key: 'kitchen' },
-  { label: 'TV', key: 'TV' },
-  { label: 'Radio', key: 'radio' },
-  { label: 'Refrigerator', key: 'refrigerator' },
-  { label: 'Microwave', key: 'microwave' },
-  { label: 'Gas', key: 'gas' },
-  { label: 'Water', key: 'water' },
-];
-
-const FEATURES_DETAILS = [
-  { label: 'Type', key: 'form' },
-  { label: 'Length', key: 'length' },
-  { label: 'Width', key: 'width' },
-  { label: 'Height', key: 'height' },
-  { label: 'Tank', key: 'tank' },
-  { label: 'Consumption', key: 'consumption' },
-];
+import Icon from '../Icon/Icon';
 
 const FeaturesBox = ({ camper }) => (
-  <div className={styles.featuresLeft}>
-    <div className={styles.topFeatures}>
-      {FEATURES_TOP.filter(f => camper[f.key]).map(f => (
-        <div key={f.key} className={styles.featureItem}>
-          <strong>{f.label}:</strong>{' '}
-          {typeof camper[f.key] === 'boolean'
-            ? camper[f.key] ? 'Yes' : 'No'
-            : camper[f.key]}
-        </div>
-      ))}
+  <div className={styles.featuresSection}>
+    <div className={styles.features}>
+      {camper.transmission && (
+        <span className={styles.badge}>
+          <Icon name="diagram" width={20} height={20} className={styles.badgeIcon} />
+          <span className={styles.badgeText}>{camper.transmission}</span>
+        </span>
+      )}
+      {camper.engine && (
+        <span className={styles.badge}>
+          <Icon name="fuel-pump" width={20} height={20} className={styles.badgeIcon} />
+          <span className={styles.badgeText}>{camper.engine}</span>
+        </span>
+      )}
+      {camper.AC && (
+        <span className={styles.badge}>
+          <Icon name="wind" width={20} height={20} className={styles.badgeIcon} />
+          <span className={styles.badgeText}>AC</span>
+        </span>
+      )}
+      {camper.kitchen && (
+        <span className={styles.badge}>
+          <Icon name="cup-hot" width={20} height={20} className={styles.badgeIcon} />
+          <span className={styles.badgeText}>Kitchen</span>
+        </span>
+      )}
+      {camper.TV && (
+        <span className={styles.badge}>
+          <Icon name="tv" width={20} height={20} className={styles.badgeIcon} />
+          <span className={styles.badgeText}>TV</span>
+        </span>
+      )}
+      {camper.bathroom && (
+        <span className={styles.badge}>
+          <Icon name="ph_shower" width={20} height={20} className={styles.badgeIcon} />
+          <span className={styles.badgeText}>Bathroom</span>
+        </span>
+      )}
     </div>
-    <ul className={styles.detailsList}>
-      {FEATURES_DETAILS.map(f => (
-        <li key={f.key}>
-          <strong>{f.label}:</strong> {camper[f.key]}
-        </li>
-      ))}
-    </ul>
+    <div className={styles.vehicleDetails}>
+      <h3>Vehicle details</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td>Type</td>
+            <td>{camper.form}</td>
+          </tr>
+          <tr>
+            <td>Length</td>
+            <td>{camper.length}</td>
+          </tr>
+          <tr>
+            <td>Width</td>
+            <td>{camper.width}</td>
+          </tr>
+          <tr>
+            <td>Height</td>
+            <td>{camper.height}</td>
+          </tr>
+          <tr>
+            <td>Tank</td>
+            <td>{camper.tank}</td>
+          </tr>
+          <tr>
+            <td>Consumption</td>
+            <td>{camper.consumption}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 );
 

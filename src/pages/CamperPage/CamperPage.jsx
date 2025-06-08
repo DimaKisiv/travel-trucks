@@ -84,7 +84,6 @@ const CamperPage = () => {
         ))}
       </div>
       <p className={styles.description}>{camper.description}</p>
-      {/* Tabs */}
       <div className={styles.tabs}>
         <button
           className={activeTab === "features" ? styles.activeTab : ""}
@@ -100,7 +99,6 @@ const CamperPage = () => {
         </button>
       </div>
 
-      {/* Tab Content */}
       {activeTab === "features" && (
         <div className={styles.featuresTab}>
           <FeaturesBox camper={camper} />

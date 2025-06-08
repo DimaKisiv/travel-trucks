@@ -1,3 +1,82 @@
+.featuresSection {
+  max-width: 500px;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 18px;
+  gap: 8px;
+  background: #f2f4f7;
+  mix-blend-mode: multiply;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #101828;
+  height: 48px;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.badgeIcon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.badgeText {
+  height: 24px;
+  text-align: center;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.vehicleDetails h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.vehicleDetails table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+}
+
+.vehicleDetails tr {
+  border-bottom: 1px solid #eee;
+}
+
+.vehicleDetails td {
+  padding: 10px 4px;
+  vertical-align: top;
+}
+
+.vehicleDetails td:first-child {
+  color: #666;
+  width: 50%;
+}
+
 .featuresLeft {
   background: #f8f8f8;
   border-radius: 8px;
