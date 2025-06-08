@@ -1,57 +1,136 @@
-import React from 'react';
-import { Link } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleFavorite, selectFavorites } from '../../redux/favoritesSlice';
-import styles from './CamperCard.module.css';
-
-const HeartIcon = ({ filled }) => (
-  <svg
-    width="28"
-    height="28"
-    viewBox="0 0 24 24"
-    fill={filled ? "#e63946" : "none"}
-    stroke="#e63946"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={styles.heartIcon}
-  >
-    <path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z" />
-  </svg>
-);
+import React from "react";
+import { Link } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { selectFavorites, toggleFavorite } from "../../redux/favoritesSlice";
+import styles from "./CamperCard.module.css";
+import Icon from "../icon/icon";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const isFavorite = favorites.includes(camper.id);
 
-  const handleFavorite = (e) => {
-    e.preventDefault();
+  const MAX_DESC_LENGTH = 68;
+  const getShortDescription = (desc) => {
+    if (!desc) return "";
+    return desc.length > MAX_DESC_LENGTH
+      ? desc.slice(0, MAX_DESC_LENGTH) + "..."
+      : desc;
+  };
+
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
     dispatch(toggleFavorite(camper.id));
   };
 
   return (
-    <div className={styles.camperCard}>
+    <article className={styles.camperCard}>
       <div className={styles.imageCol}>
         <img
           className={styles.camperImg}
-          src={camper.gallery?.[0]?.thumb || 'https://via.placeholder.com/292x312?text=No+Image'}
+          src={camper.gallery?.[0]?.thumb}
           alt={camper.name}
         />
-        <span className={styles.heartWrapper} onClick={handleFavorite}>
-          <HeartIcon filled={isFavorite} />
-        </span>
       </div>
       <div className={styles.infoCol}>
-        <h2>
-          <Link to={`/campers/${camper.id}`}>{camper.name}</Link>
-        </h2>
-        <p>{camper.description}</p>
-        <Link to={`/campers/${camper.id}`}>
-          <button className={styles.detailsBtn}>View Details</button>
+        <div className={styles.cardHeader}>
+          <h2>{camper.name}</h2>
+          <div className={styles.priceFavRow}>
+            <span className={styles.price}>
+              €
+              {Number(camper.price)
+                .toLocaleString("uk-UA", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                  useGrouping: true,
+                })
+                .replace(/,/g, ".")}
+            </span>
+            <span
+              className={styles.favoriteIcon}
+              aria-label={
+                isFavorite ? "Remove from favorites" : "Add to favorites"
+              }
+              tabIndex={0}
+              role="button"
+              onClick={handleFavoriteClick}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") handleFavoriteClick(e);
+              }}
+            >
+              <Icon
+                name={isFavorite ? "heart-filled" : "heart-empty"}
+                width={24}
+                height={20}
+              />
+            </span>
+          </div>
+        </div>
+        <p className={styles.reviews}>
+          <Icon
+            name="rating-filled"
+            width={16}
+            height={16}
+            className={styles.starIcon}
+          />{" "}
+          {camper.rating}
+          {camper.reviews?.length
+            ? ` (${camper.reviews.length} Reviews)`
+            : ""}{" "}
+          <span className={styles.location}>
+            <Icon
+              name="location-selected"
+              width={16}
+              height={16}
+              className={styles.locationIcon}
+            />{" "}
+            {camper.location}
+          </span>
+        </p>
+        <p className={styles.desc}>{getShortDescription(camper.description)}</p>
+        <div className={styles.tags}>
+          {camper.transmission && (
+            <span className={styles.badge}>
+              <Icon name="diagram" size={20} className={styles.badgeIcon} />
+              <span className={styles.badgeText}>{camper.transmission}</span>
+            </span>
+          )}
+          {camper.engine && (
+            <span className={styles.badge}>
+              <Icon name="fuel-pump" size={20} className={styles.badgeIcon} />
+              <span className={styles.badgeText}>{camper.engine}</span>
+            </span>
+          )}
+          {camper.AC && (
+            <span className={styles.badge}>
+              <Icon name="wind" className={styles.badgeIcon} />
+              <span className={styles.badgeText}>AC</span>
+            </span>
+          )}
+          {camper.kitchen && (
+            <span className={styles.badge}>
+              <Icon name="cup-hot" className={styles.badgeIcon} />
+              <span className={styles.badgeText}>Kitchen</span>
+            </span>
+          )}
+          {camper.TV && (
+            <span className={styles.badge}>
+              <Icon name="tv" className={styles.badgeIcon} />
+              <span className={styles.badgeText}>TV</span>
+            </span>
+          )}
+          {camper.bathroom && (
+            <span className={styles.badge}>
+              <Icon name="ph_shower" className={styles.badgeIcon} />
+              <span className={styles.badgeText}>Bathroom</span>
+            </span>
+          )}
+        </div>
+        <Link to={`/campers/${camper.id}`} className={styles.showMore}>
+          Show more
         </Link>
       </div>
-    </div>
+    </article>
   );
 };
 

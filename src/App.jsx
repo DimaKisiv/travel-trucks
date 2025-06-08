@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router';
 import { Provider } from 'react-redux';
 import Navigation from './components/Navigation/Navigation';
 import store from './redux/store';
-import './App.module.css';
+import styles from './App.module.css'; // Import CSS module for main layout
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const CampersPage = lazy(() => import('./pages/CampersPage/CampersPage'));
@@ -14,13 +14,15 @@ function App() {
     <Provider store={store}>
       <Router>
         <Navigation />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/campers" element={<CampersPage />} />
-            <Route path="/campers/:id" element={<CamperPage />} />
-          </Routes>
-        </Suspense>
+        <main className={styles.main}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/campers" element={<CampersPage />} />
+              <Route path="/campers/:id" element={<CamperPage />} />
+            </Routes>
+          </Suspense>
+        </main>
       </Router>
     </Provider>
   );

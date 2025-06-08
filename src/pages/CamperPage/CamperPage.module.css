@@ -1,24 +1,28 @@
+.headline {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
 .tabs {
   display: flex;
   gap: 1rem;
-  margin: 2rem 0 1rem 0;
+  margin: 0;
 }
 
 .tabs button {
-  background: #f0f0f0;
-  border: none;
-  padding: 0.7rem 2rem;
-  border-radius: 5px 5px 0 0;
-  font-size: 1rem;
+  color:#101828;
+  border:0;
   cursor: pointer;
-  color: #333;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  background: 0;
 }
 
 .activeTab {
-  background: #fff;
-  border-bottom: 2px solid #007bff;
-  color: #007bff;
-  font-weight: bold;
 }
 
 .featuresTab {
@@ -27,7 +31,8 @@
   margin-bottom: 2rem;
 }
 
-.featuresLeft, .featuresRight {
+.featuresLeft,
+.featuresRight {
   background: #f8f8f8;
   border-radius: 8px;
   padding: 1.5rem;
@@ -74,45 +79,51 @@
 
 .thumbnailsRow {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 48px;
+  margin-bottom: 28px;
 }
 
 .thumbnailImg {
   width: 292px;
   height: 312px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  border: 2px solid #eee;
   transition: border 0.2s;
 }
-.thumbnailImg:hover {
-  border: 2px solid #007bff;
+.description {
+  margin: 0 0 60px 0;
 }
-
 .price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #007bff;
-  margin-bottom: 1rem;
+  color: #101828;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+  margin-bottom: 28px;
 }
 
 .infoRow {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  margin-bottom: 16px;
 }
 
 .rank {
-  font-weight: 500;
+  color: #101828;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  margin-right: 16px;
 }
 
 .location {
-  color: #555;
-  font-style: italic;
+  color: #101828;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
 }
 
 .stars {

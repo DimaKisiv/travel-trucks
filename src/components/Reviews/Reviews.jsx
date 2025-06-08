@@ -1,7 +1,18 @@
 import React from 'react';
 import styles from './Reviews.module.css';
+import Icon from '../icon/icon'; // adjust path as needed
 
-const getStars = (rating) => '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
+const getStars = (rating) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      i <= Math.round(rating)
+        ? <Icon key={i} name="rating-filled" size={18} />
+        : <Icon key={i} name="rating-empty" size={18} />
+    );
+  }
+  return stars;
+};
 
 const Reviews = ({ reviews = [] }) => {
   if (!reviews.length) return <div className={styles.noReviews}>No reviews yet.</div>;

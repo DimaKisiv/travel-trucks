@@ -1,0 +1,137 @@
+.sidebar {
+  max-width: 488px;
+  padding: 64px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.filterBlock {
+  margin-bottom: 32px;
+}
+
+.filterBlock h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #475467;
+  margin-top: 40px;
+  margin-bottom: 32px;
+}
+
+.filterLabel {
+  color: #6c717b;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  margin-bottom: 8px;
+}
+
+.locationInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: #101828;
+  gap: 10px;
+  border-radius: 12px;
+  padding-left: 8px;
+  width: 100%;
+}
+
+.locationBox {
+  background: #f2f2f2;
+  border-radius: 12px;
+  width: 360px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: #101828;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.filterGroup {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.filterTitle {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #dadde1;
+  padding-bottom: 24px;
+  color: #101828;
+}
+
+.filterOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.filterBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dadde1;
+  cursor: pointer;
+  color: #101828;
+  transition: all 0.2s ease;
+  width: 112px;
+  height: 96px;
+  gap: 8px;
+  border-radius: 12px;
+  border-width: 1px;
+  padding-top: 16px;
+  padding-right: 40px;
+  padding-bottom: 16px;
+  padding-left: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.08px;
+  text-align: center;
+}
+
+.fullyIntegrated {
+  padding-top: 8px;
+  padding-bottom: 2px;
+  gap: 2px;
+}
+
+.active {
+  border-color: #e44848;
+}
+
+.searchBtn {
+  align-self: flex-start;
+  padding: 16px 40px;
+  background: #e44848;
+  color: white;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  width: 166px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.08px;
+  vertical-align: middle;
+}

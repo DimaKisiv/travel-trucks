@@ -2,30 +2,26 @@
 
 /* Global styles for the application */
 body {
-    margin: 0;
-    font-family: 'Inter', Arial, sans-serif;
-    background-color: #f0f0f0;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #FFFFFF;
 }
 
-h1 {
-    color: #333;
+.main {
+  max-width: 1440px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  background: #ffffff;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.home {
+  padding: 0px;
 }
 
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
+.camper-page {
+  flex-direction: column;
+  gap: 0;
+  padding: 48px 64px 80px 64px;
 }

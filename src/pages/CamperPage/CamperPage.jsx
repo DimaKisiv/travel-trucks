@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCamperById } from '../../redux/operations';
-import { selectCamper, selectCamperStatus, selectCamperError } from '../../redux/camperSlice';
-import Reviews from '../../components/Reviews/Reviews';
-import BookingForm from '../../components/BookingForm/BookingForm';
-import Gallery from '../../components/Gallery/Gallery';
-import Modal from '../../components/Modal/Modal';
-import FeaturesBox from '../../components/FeaturesBox/FeaturesBox';
-import styles from './CamperPage.module.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCamperById } from "../../redux/operations";
+import {
+  selectCamper,
+  selectCamperStatus,
+  selectCamperError,
+} from "../../redux/camperSlice";
+import Reviews from "../../components/Reviews/Reviews";
+import BookingForm from "../../components/BookingForm/BookingForm";
+import Gallery from "../../components/Gallery/Gallery";
+import Modal from "../../components/Modal/Modal";
+import FeaturesBox from "../../components/FeaturesBox/FeaturesBox";
+import Icon from "../../components/icon/icon";
+import styles from "./CamperPage.module.css";
 
 const CamperPage = () => {
   const { id } = useParams();
@@ -19,7 +24,7 @@ const CamperPage = () => {
 
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [activeTab, setActiveTab] = useState('features');
+  const [activeTab, setActiveTab] = useState("features");
 
   useEffect(() => {
     if (id) {
@@ -27,7 +32,7 @@ const CamperPage = () => {
     }
   }, [dispatch, id]);
 
-  if (status === 'loading') return <div>Loading...</div>;
+  if (status === "loading") return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!camper) return <div>No camper found.</div>;
 
@@ -35,18 +40,34 @@ const CamperPage = () => {
   const thumbnails = camper.gallery?.slice(0, 4) || [];
 
   return (
-    <div>
-      <h2>{camper.name}</h2>
+    <main className="main camper-page">
+      <h2 className={styles.headline}>{camper.name}</h2>
       <div className={styles.infoRow}>
         <span className={styles.rank}>
-          <span className={styles.stars}>★</span>
+          <Icon
+            name="rating-filled"
+            width={16}
+            height={16}
+            className={styles.stars}
+          />
           {camper.rating}
-          {camper.reviews?.length ? ` (${camper.reviews.length} Review${camper.reviews.length > 1 ? 's' : ''})` : ''}
+          {camper.reviews?.length
+            ? ` (${camper.reviews.length} Review${
+                camper.reviews.length > 1 ? "s" : ""
+              })`
+            : ""}
         </span>
+        <Icon name="location-selected" width={16} height={16} />
         <span className={styles.location}>{camper.location}</span>
       </div>
       <div className={styles.price}>
-        €{Number(camper.price).toLocaleString('uk-UA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        €
+        {Number(camper.price)
+          .toLocaleString("uk-UA", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })
+          .replace(/,/g, ".")}
       </div>
       <div className={styles.thumbnailsRow}>
         {thumbnails.map((img, idx) => (
@@ -62,25 +83,25 @@ const CamperPage = () => {
           />
         ))}
       </div>
-      <p>{camper.description}</p>
+      <p className={styles.description}>{camper.description}</p>
       {/* Tabs */}
       <div className={styles.tabs}>
         <button
-          className={activeTab === 'features' ? styles.activeTab : ''}
-          onClick={() => setActiveTab('features')}
+          className={activeTab === "features" ? styles.activeTab : ""}
+          onClick={() => setActiveTab("features")}
         >
           Features
         </button>
         <button
-          className={activeTab === 'reviews' ? styles.activeTab : ''}
-          onClick={() => setActiveTab('reviews')}
+          className={activeTab === "reviews" ? styles.activeTab : ""}
+          onClick={() => setActiveTab("reviews")}
         >
           Reviews
         </button>
       </div>
 
       {/* Tab Content */}
-      {activeTab === 'features' && (
+      {activeTab === "features" && (
         <div className={styles.featuresTab}>
           <FeaturesBox camper={camper} />
           <div className={styles.featuresRight}>
@@ -89,7 +110,7 @@ const CamperPage = () => {
         </div>
       )}
 
-      {activeTab === 'reviews' && (
+      {activeTab === "reviews" && (
         <div className={styles.reviewsTab}>
           <Reviews reviews={camper.reviews} />
         </div>
@@ -100,7 +121,7 @@ const CamperPage = () => {
           <Gallery images={camper.gallery} startIndex={selectedImage} />
         </Modal>
       )}
-    </div>
+    </main>
   );
 };
 
