@@ -1,5 +1,5 @@
 .banner {
-  width: 100%; /* Add this line */
+  width: 100%;
   max-width: 1440px;
   height: 696px;
   margin: 0 auto;
@@ -11,13 +11,20 @@
   background: var(--color-bg);
 }
 
-.banner::before {
-  content: "";
+.bannerPicture {
   position: absolute;
   inset: 0;
-  background: url("../../assets/img/banner.jpg") center/cover no-repeat;
-  transform: scaleX(-1);
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  pointer-events: none;
+}
+
+.responsiveBanner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .bannerContent {
@@ -27,6 +34,7 @@
   flex-direction: column;
   align-items: flex-start;
   z-index: 1;
+  position: relative;
 }
 
 .headline {
