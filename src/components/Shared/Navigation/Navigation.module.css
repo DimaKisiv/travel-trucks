@@ -43,6 +43,7 @@
   line-height: 24px;
   letter-spacing: 0;
   text-align: center;
+  color: var(--color-text);
 }
 
 .navBtn:visited {
