@@ -42,10 +42,17 @@ export const fetchCampers = createAsyncThunk(
       if (filters.price) params.append("price", filters.price);
       if (filters.rating) params.append("rating", filters.rating);
 
-      const response = await axios.get(
-        `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers?${params.toString()}`
-      );
-      return response.data;
+      const url = `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers?${params.toString()}`;
+      try {
+        const response = await axios.get(url);
+        return response.data;
+      } catch (err) {
+        // If 404, treat as empty result
+        if (err.response && err.response.status === 404) {
+          return [];
+        }
+        throw err;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
