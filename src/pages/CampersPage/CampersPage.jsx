@@ -13,9 +13,9 @@ import {
   resetCampers,
 } from "../../redux/campersSlice";
 import { fetchCampers } from "../../redux/operations";
-import CamperFilters from "../../components/CamperFilters/CamperFilters";
-import CampersList from "../../components/CampersList/CampersList";
-import Loader from "../../components/Loader/Loader";
+import CamperFilters from "../../components/CampersPage/CamperFilters/CamperFilters";
+import CampersList from "../../components/CampersPage/CampersList/CampersList";
+import Loader from "../../components/Shared/Loader/Loader";
 import styles from "./CampersPage.module.css";
 
 const LIMIT = 10;
@@ -30,12 +30,10 @@ const CampersPage = () => {
   const page = useSelector(selectCampersPage);
   const hasMore = useSelector(selectCampersHasMore);
 
-  // 1. Local state for filters
   const [localFilters, setLocalFilters] = useState(filters);
 
   const prevFilters = useRef(filters);
 
-  // 2. Only fetch when Redux filters change (i.e. after Search)
   useEffect(() => {
     if (prevFilters.current !== filters) {
       dispatch(resetCampers());
@@ -44,15 +42,12 @@ const CampersPage = () => {
     } else {
       dispatch(fetchCampers({ page, limit: LIMIT }));
     }
-    // eslint-disable-next-line
   }, [dispatch, page, filters]);
 
-  // 3. Update local filters on filter UI change
   const handleLocalFiltersChange = (newFilters) => {
     setLocalFilters((prev) => ({ ...prev, ...newFilters }));
   };
 
-  // 4. On Search, update Redux filters (triggers fetch)
   const handleSearch = () => {
     dispatch(setCampersFilters(localFilters));
   };

@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
-import campersReducer from './campersSlice';
-import camperReducer from './camperSlice';
-import favoritesReducer from './favoritesSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import campersReducer from "./campersSlice";
+import camperReducer from "./camperSlice";
+import favoritesReducer from "./favoritesSlice";
 
 const store = configureStore({
   reducer: {

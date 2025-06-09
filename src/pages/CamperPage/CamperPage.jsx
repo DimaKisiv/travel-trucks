@@ -7,13 +7,13 @@ import {
   selectCamperStatus,
   selectCamperError,
 } from "../../redux/camperSlice";
-import Reviews from "../../components/Reviews/Reviews";
-import BookingForm from "../../components/BookingForm/BookingForm";
-import Gallery from "../../components/Gallery/Gallery";
-import Modal from "../../components/Modal/Modal";
-import FeaturesBox from "../../components/FeaturesBox/FeaturesBox";
-import Icon from "../../components/Icon/Icon";
-import Loader from "../../components/Loader/Loader";
+import Reviews from "../../components/CamperPage/Reviews/Reviews";
+import BookingForm from "../../components/CamperPage/BookingForm/BookingForm";
+import Gallery from "../../components/CamperPage/Gallery/Gallery";
+import Modal from "../../components/Shared/Modal/Modal";
+import FeaturesBox from "../../components/CamperPage/FeaturesBox/FeaturesBox";
+import Icon from "../../components/Shared/Icon/Icon";
+import Loader from "../../components/Shared/Loader/Loader";
 import styles from "./CamperPage.module.css";
 
 const CamperPage = () => {
@@ -37,7 +37,6 @@ const CamperPage = () => {
   if (error) return <div>Error: {error}</div>;
   if (!camper) return <div>No camper found.</div>;
 
-  // Show up to 4 thumbnails in a row
   const thumbnails = camper.gallery?.slice(0, 4) || [];
 
   return (
@@ -75,7 +74,7 @@ const CamperPage = () => {
           <img
             key={idx}
             src={img.thumb}
-            alt={camper.name}
+            alt={`Interior view of ${camper.name} camper, photo ${idx + 1}`}
             className={styles.thumbnailImg}
             onClick={() => {
               setSelectedImage(idx);
@@ -85,37 +84,43 @@ const CamperPage = () => {
         ))}
       </div>
       <p className={styles.description}>{camper.description}</p>
-      <div className={styles.tabs}>
+      <nav className={styles.tabs} aria-label="Camper details navigation">
         <button
+          role="tab"
           className={activeTab === "features" ? styles.activeTab : ""}
           onClick={() => setActiveTab("features")}
         >
           Features
         </button>
         <button
+          role="tab"
           className={activeTab === "reviews" ? styles.activeTab : ""}
           onClick={() => setActiveTab("reviews")}
         >
           Reviews
         </button>
-      </div>
+      </nav>
 
       <div className={styles.featuresTab}>
-        <div className={styles.featuresLeft}>
+        <section className={styles.featuresLeft} aria-label="Features or Reviews">
           {activeTab === "features" ? (
-            <FeaturesBox camper={camper} />
+            <section aria-label="Features">
+              <FeaturesBox camper={camper} />
+            </section>
           ) : (
-            <Reviews reviews={camper.reviews} />
+            <article aria-label="Reviews">
+              <Reviews reviews={camper.reviews} />
+            </article>
           )}
-        </div>
-        <div className={styles.featuresRight}>
+        </section>
+        <aside className={styles.featuresRight} aria-label="Booking">
           <BookingForm />
-        </div>
+        </aside>
       </div>
 
       {galleryOpen && (
         <Modal onClose={() => setGalleryOpen(false)}>
-          <Gallery images={camper.gallery} startIndex={selectedImage} />
+          <Gallery images={camper.gallery} startIndex={selectedImage} camperName={camper.name} />
         </Modal>
       )}
     </main>

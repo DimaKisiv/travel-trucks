@@ -1,28 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchCamperById } from './operations';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCamperById } from "./operations";
 
 // This slice manages the state for a single camper fetched by ID.
 const camperSlice = createSlice({
-  name: 'camper',
+  name: "camper",
   initialState: {
     item: null,
-    status: 'idle',
+    status: "idle",
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCamperById.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
         state.error = null;
         state.item = null;
       })
       .addCase(fetchCamperById.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.item = action.payload;
       })
       .addCase(fetchCamperById.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.payload;
       });
   },
