@@ -11,13 +11,8 @@ body {
   max-width: 1440px;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 20px;
   display: flex;
   background: #ffffff;
-}
-
-.home {
-  padding: 0px;
 }
 
 .camper-page {

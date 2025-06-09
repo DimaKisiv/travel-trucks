@@ -7,11 +7,13 @@ function Navigation() {
     <header>
       <nav className={styles.nav}>
         <div className={styles.logo}>
-          <img
-            src={Logo}
-            alt="Travel Trucks Logo"
-            className={styles.logoImage}
-          />
+          <NavLink to="/" className={styles.logoImage}>
+            <img
+              src={Logo}
+              alt="Travel Trucks Logo"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </NavLink>
         </div>
         <ul className={styles.centerNav}>
           <li>

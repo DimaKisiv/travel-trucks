@@ -3,7 +3,7 @@ import Banner from "../../components/Banner/Banner";
 
 const HomePage = () => {
   return (
-    <main className="main home">
+    <main className="main">
       <Banner />
     </main>
   );
