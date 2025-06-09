@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCampers } from "./operations";
-import { filterCampers } from "../helpers/filterCampers";
 
 const campersSlice = createSlice({
   name: "campers",
@@ -79,12 +78,7 @@ export const selectCampersError = (state) => state.campers.error;
 export const selectCampersFilters = (state) => state.campers.filters;
 export const selectCampersPage = (state) => state.campers.page;
 export const selectCampersHasMore = (state) => state.campers.hasMore;
-export const selectFilteredCampers = (state) => {
-  if (state.campers.status !== "succeeded") {
-    return [];
-  }
-  return filterCampers(state.campers.items, state.campers.filters);
-};
+export const selectFilteredCampers = (state) => state.campers.items;
 
 export const {
   setCampersFilters,

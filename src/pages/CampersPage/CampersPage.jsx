@@ -37,10 +37,10 @@ const CampersPage = () => {
   useEffect(() => {
     if (prevFilters.current !== filters) {
       dispatch(resetCampers());
-      dispatch(fetchCampers({ page: 1, limit: LIMIT }));
+      dispatch(fetchCampers({ page: 1, limit: LIMIT, filters }));
       prevFilters.current = filters;
     } else {
-      dispatch(fetchCampers({ page, limit: LIMIT }));
+      dispatch(fetchCampers({ page, limit: LIMIT, filters }));
     }
   }, [dispatch, page, filters]);
 
