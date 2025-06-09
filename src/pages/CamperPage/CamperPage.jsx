@@ -12,7 +12,7 @@ import BookingForm from "../../components/BookingForm/BookingForm";
 import Gallery from "../../components/Gallery/Gallery";
 import Modal from "../../components/Modal/Modal";
 import FeaturesBox from "../../components/FeaturesBox/FeaturesBox";
-import Icon from "../../components/icon/icon";
+import Icon from "../../components/Icon/Icon";
 import Loader from "../../components/Loader/Loader";
 import styles from "./CamperPage.module.css";
 
