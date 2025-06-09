@@ -25,6 +25,7 @@ const Gallery = ({ images, startIndex = 0, camperName = "camper" }) => {
           <img
             src={item.original}
             alt={item.originalAlt}
+            loading="lazy"
             style={{ width: "100%", borderRadius: "8px" }}
           />
         )}
@@ -32,6 +33,7 @@ const Gallery = ({ images, startIndex = 0, camperName = "camper" }) => {
           <img
             src={item.thumbnail}
             alt={item.thumbnailAlt}
+            loading="lazy"
             style={{ width: "100%", borderRadius: "4px" }}
           />
         )}

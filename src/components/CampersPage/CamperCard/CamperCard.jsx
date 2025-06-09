@@ -31,6 +31,7 @@ const CamperCard = ({ camper }) => {
           className={styles.camperImg}
           src={camper.gallery?.[0]?.thumb}
           alt={`Interior view of ${camper.name} camper`}
+          loading="lazy"
         />
       </div>
       <div className={styles.infoCol}>

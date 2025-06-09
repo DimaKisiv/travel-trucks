@@ -76,6 +76,7 @@ const CamperPage = () => {
             src={img.thumb}
             alt={`Interior view of ${camper.name} camper, photo ${idx + 1}`}
             className={styles.thumbnailImg}
+            loading="lazy"
             onClick={() => {
               setSelectedImage(idx);
               setGalleryOpen(true);
