@@ -25,6 +25,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scaleX(-1); /* Reverse image left to right */
 }
 
 .bannerContent {
