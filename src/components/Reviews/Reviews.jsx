@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Reviews.module.css";
-import Icon from "../icon/icon"; // adjust path as needed
+import Icon from "../Icon/Icon"; // adjust path as needed
 
 const getStars = (rating) => {
   const stars = [];

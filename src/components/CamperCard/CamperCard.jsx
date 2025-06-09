@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFavorites, toggleFavorite } from "../../redux/favoritesSlice";
 import styles from "./CamperCard.module.css";
-import Icon from "../icon/icon";
+import Icon from "../Icon/Icon";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();

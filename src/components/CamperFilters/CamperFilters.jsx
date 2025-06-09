@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CamperFilters.module.css';
-import Icon from '../icon/icon';
+import Icon from '../Icon/Icon';
 
 const equipmentOptions = [
   { icon: <Icon name="wind" width={36} height={32} />, label: 'AC', value: 'ac' },
