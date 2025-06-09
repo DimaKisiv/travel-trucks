@@ -11,8 +11,8 @@
   justify-content: center;
 }
 .content {
-  background: #fff;
-  border-radius: 8px;
+  border-radius: var(--radius-main);
+  background: var(--color-bg);
   padding: 16px;
   max-width: 95vw;
   max-height: 95vh;
@@ -26,6 +26,6 @@
   font-size: 2rem;
   background: none;
   border: none;
-  color: #333;
+  color: var(--color-text);
   cursor: pointer;
 }

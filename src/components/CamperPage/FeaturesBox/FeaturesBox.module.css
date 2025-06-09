@@ -1,9 +1,9 @@
 .featuresSection {
   max-width: 500px;
-  background: #f7f7f7;
+  background: var(--color-bg-light);
   padding: 44px 52px;
-  border-radius: 12px;
-  font-family: "Inter", sans-serif;
+  border-radius: var(--radius-main);
+  font-family: var(--font-main);
 }
 
 .featuresWrapper {
@@ -25,14 +25,14 @@
   align-items: center;
   padding: 12px 18px;
   gap: 8px;
-  background: #f2f4f7;
+  background: var(--color-bg-grey);
   mix-blend-mode: multiply;
   border-radius: 100px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #101828;
+  color: var(--color-text);
   height: 48px;
   width: fit-content;
   box-sizing: border-box;
@@ -65,31 +65,29 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0;
-  color: #101828;
+  color: var(--color-text);
   padding: 0 0 24px 0;
   margin: 0 0 24px 0;
-  border-bottom: 1px solid #dadde1;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .vehicleDetails table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text);
 }
 
 .vehicleDetails tr {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .vehicleDetails td {
-  padding: 10px 4px;
-  vertical-align: top;
+  color: var(--color-text);
 }
 
 .vehicleDetails td:first-child {
-  color: #666;
-  width: 50%;
+  color: var(--color-text-light);
 }
 
 .detailsRow {
@@ -102,7 +100,7 @@
   line-height: 24px;
   letter-spacing: 0;
   text-align: center;
-  color: #101828;
+  color: var(--color-text);
 }
 
 .detailsName {
@@ -111,7 +109,7 @@
 }
 
 .detailsValue {
-  color: #333;
+  color: var(--color-text);
   width: 50%;
   text-align: right;
 }
@@ -124,10 +122,8 @@
 }
 
 .featureItem {
-  background: #e9ecef;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  border-radius: var(--radius-main);
+  background: var(--color-bg-grey);
 }
 
 .detailsList {

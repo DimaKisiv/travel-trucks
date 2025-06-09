@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./BookingForm.module.css";
+import Modal from "../../Shared/Modal/Modal";
+import BookingSuccess from "./BookingSuccess";
 
 const BookingForm = () => {
   const [form, setForm] = useState({
@@ -12,6 +14,8 @@ const BookingForm = () => {
   });
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,12 +46,18 @@ const BookingForm = () => {
     setTouched({ name: true, email: true, bookingDate: true });
     setSubmitted(true);
     if (isValid) {
-      alert("Booking submitted!");
+      setSubmittedData(form);
+      setShowModal(true);
       setForm({ name: "", email: "", bookingDate: null, comment: "" });
       setTouched({});
       setSubmitted(false);
     }
   };
+
+  // Set tomorrow as the minimum selectable date
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
 
   return (
     <div className={styles.formContainer}>
@@ -108,9 +118,9 @@ const BookingForm = () => {
           selected={form.bookingDate}
           onChange={handleDateChange}
           onBlur={() => setTouched((prev) => ({ ...prev, bookingDate: true }))}
-          minDate={new Date()}
+          minDate={tomorrow}
           placeholderText="Booking date*"
-          dateFormat="yyyy-MM-dd"
+          dateFormat="MMMM d, yyyy" // <-- human-friendly format
           className={styles.input}
           required
           aria-required="true"
@@ -145,6 +155,12 @@ const BookingForm = () => {
           </div>
         )}
       </form>
+
+      {showModal && submittedData && (
+        <Modal onClose={() => setShowModal(false)}>
+          <BookingSuccess data={submittedData} onClose={() => setShowModal(false)} />
+        </Modal>
+      )}
     </div>
   );
 };

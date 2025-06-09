@@ -1,10 +1,10 @@
 .camperCard {
   display: flex;
-  background: #fff;
-  border-radius: 20px;
+  background: var(--color-bg);
+  border-radius: var(--radius-large);
   overflow: hidden;
   padding: 24px;
-  border: 1px solid #dadde1;
+  border: 1px solid var(--color-border);
   box-sizing: border-box;
 }
 
@@ -15,14 +15,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0f0f0;
+  background: var(--color-bg-grey);
 }
 
 .camperImg {
   max-width: 292px;
   height: 320px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--radius-main);
 }
 
 .infoCol {
@@ -53,6 +53,7 @@
   font-size: 24px;
   line-height: 32px;
   letter-spacing: 0;
+  color: var(--color-text);
 }
 
 .reviews {
@@ -82,10 +83,10 @@
 .showMore {
   align-self: flex-start;
   padding: 16px 40px;
-  background: #e44848;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-bg);
   border: none;
-  border-radius: 200px;
+  border-radius: var(--radius-round);
   cursor: pointer;
   width: 166px;
   height: 56px;
@@ -102,7 +103,7 @@
 }
 
 .showMore:hover {
-  background-color: #d84343;
+  background-color: var(--color-primary-hover);
 }
 
 .badge {
@@ -111,14 +112,14 @@
   align-items: center;
   padding: 12px 18px;
   gap: 8px;
-  background: #f2f4f7;
+  background: var(--color-bg-grey);
   mix-blend-mode: multiply;
   border-radius: 100px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #101828;
+  color: var(--color-text);
   height: 48px;
   width: fit-content;
   box-sizing: border-box;
@@ -159,7 +160,7 @@
 }
 
 .favoriteIcon svg {
-  color: #e44848;
+  color: var(--color-primary);
 }
 
 .starIcon {

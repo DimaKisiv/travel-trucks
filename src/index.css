@@ -1,7 +1,9 @@
+@import "./variables.css";
+
 body {
   margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background-color: #ffffff;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
 }
 
 .main {
@@ -9,7 +11,7 @@ body {
   box-sizing: border-box;
   margin: 0 auto;
   display: flex;
-  background: #ffffff;
+  background: var(--color-bg);
 }
 
 .camper-page {

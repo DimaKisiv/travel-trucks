@@ -1,0 +1,22 @@
+:root {
+  --color-primary: #e44848;
+  --color-primary-hover: #d84343;
+  --color-bg: #ffffff;
+  --color-bg-light: #f7f7f7;
+  --color-bg-grey: #f2f2f2;
+  --color-border: #dadde1;
+  --color-border-dark: #475467;
+  --color-text: #101828;
+  --color-text-light: #666;
+  --color-text-grey: #888;
+  --color-star: #ffc107;
+  --color-error: #d32f2f;
+
+  --radius-main: 12px;
+  --radius-large: 20px;
+  --radius-round: 200px;
+
+  --font-main: "Inter", Arial, sans-serif;
+
+  --transition-main: 0.2s;
+}
