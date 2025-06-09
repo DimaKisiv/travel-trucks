@@ -86,8 +86,8 @@
 
 .error {
   color: var(--color-error);
-  font-size: 0.95rem;
-  margin-top: 0.2rem;
+  font-size: 15px;
+  margin-top: 3px;
 }
 
 /* Do not touch datepicker calendar styles below */

@@ -1,6 +1,6 @@
 .pageWrapper {
   display: flex;
-  gap: 2rem;
+  gap: 32px;
   align-items: flex-start;
 }
 

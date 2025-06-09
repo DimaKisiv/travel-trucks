@@ -26,7 +26,7 @@
 
 .centerNav {
   display: flex;
-  gap: 2rem;
+  gap: 32px;
   list-style: none;
   margin: 0 auto;
   padding: 0;
