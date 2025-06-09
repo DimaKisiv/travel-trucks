@@ -54,7 +54,6 @@ const BookingForm = () => {
     }
   };
 
-  // Set tomorrow as the minimum selectable date
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
@@ -120,7 +119,7 @@ const BookingForm = () => {
           onBlur={() => setTouched((prev) => ({ ...prev, bookingDate: true }))}
           minDate={tomorrow}
           placeholderText="Booking date*"
-          dateFormat="MMMM d, yyyy" // <-- human-friendly format
+          dateFormat="MMMM d, yyyy"
           className={styles.input}
           required
           aria-required="true"
@@ -158,7 +157,10 @@ const BookingForm = () => {
 
       {showModal && submittedData && (
         <Modal onClose={() => setShowModal(false)}>
-          <BookingSuccess data={submittedData} onClose={() => setShowModal(false)} />
+          <BookingSuccess
+            data={submittedData}
+            onClose={() => setShowModal(false)}
+          />
         </Modal>
       )}
     </div>

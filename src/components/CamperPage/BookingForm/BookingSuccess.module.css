@@ -5,7 +5,7 @@
   text-align: center;
   border-radius: var(--radius-main);
   background: var(--color-bg);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .successTitle {
@@ -23,7 +23,7 @@
   padding: 18px 20px;
   font-size: 16px;
   color: var(--color-text);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .detailRow {
