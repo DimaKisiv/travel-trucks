@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectFavorites, toggleFavorite } from "../../redux/favoritesSlice";
 import styles from "./CamperCard.module.css";
 import Icon from "../Icon/Icon";
+import FEATURE_BADGES from "../../helpers/featureBadges";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
@@ -89,41 +90,14 @@ const CamperCard = ({ camper }) => {
         </p>
         <p className={styles.desc}>{getShortDescription(camper.description)}</p>
         <div className={styles.tags}>
-          {camper.transmission && (
-            <span className={styles.badge}>
-              <Icon name="diagram" size={20} className={styles.badgeIcon} />
-              <span className={styles.badgeText}>{camper.transmission}</span>
-            </span>
-          )}
-          {camper.engine && (
-            <span className={styles.badge}>
-              <Icon name="fuel-pump" size={20} className={styles.badgeIcon} />
-              <span className={styles.badgeText}>{camper.engine}</span>
-            </span>
-          )}
-          {camper.AC && (
-            <span className={styles.badge}>
-              <Icon name="wind" className={styles.badgeIcon} />
-              <span className={styles.badgeText}>AC</span>
-            </span>
-          )}
-          {camper.kitchen && (
-            <span className={styles.badge}>
-              <Icon name="cup-hot" className={styles.badgeIcon} />
-              <span className={styles.badgeText}>Kitchen</span>
-            </span>
-          )}
-          {camper.TV && (
-            <span className={styles.badge}>
-              <Icon name="tv" className={styles.badgeIcon} />
-              <span className={styles.badgeText}>TV</span>
-            </span>
-          )}
-          {camper.bathroom && (
-            <span className={styles.badge}>
-              <Icon name="ph_shower" className={styles.badgeIcon} />
-              <span className={styles.badgeText}>Bathroom</span>
-            </span>
+          {FEATURE_BADGES.map(
+            ({ key, label, icon }) =>
+              camper[key] && (
+                <span className={styles.badge} key={key}>
+                  <Icon name={icon} width={20} height={20} className={styles.badgeIcon} />
+                  <span className={styles.badgeText}>{label(camper[key])}</span>
+                </span>
+              )
           )}
         </div>
         <Link to={`/campers/${camper.id}`} className={styles.showMore}>

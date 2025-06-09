@@ -4,7 +4,11 @@ import styles from './CampersList.module.css';
 
 const CampersList = ({ campers, status }) => {
   if (status !== 'loading' && (!campers || campers.length === 0)) {
-    return <div>No campers found.</div>;
+    return (
+      <div className={styles.noCampersFound}>
+        <div>No campers found.</div>
+      </div>
+    );
   }
 
   return (

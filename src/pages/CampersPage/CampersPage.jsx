@@ -52,13 +52,13 @@ const CampersPage = () => {
   };
 
   return (
-    <main className="main">
+    <main className="main campers-page">
       <CamperFilters filters={filters} setFilters={handleSetFilters} />
       <section className={styles.results}>
         {status === "loading" && <Loader />}
         {error && <p>Error: {error}</p>}
         <CampersList campers={campers} status={status} />
-        {hasMore && (
+        {hasMore && campers.length > 0 && (
           <button
             className={styles.loadMore}
             onClick={handleLoadMore}

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './FeaturesBox.module.css';
 import Icon from '../Icon/Icon';
+import FEATURE_BADGES from '../../helpers/featureBadges';
 
 const VEHICLE_DETAILS = [
   { label: 'Type', key: 'form' },
@@ -14,41 +15,13 @@ const VEHICLE_DETAILS = [
 const FeaturesBox = ({ camper }) => (
   <div className={styles.featuresSection}>
     <div className={styles.features}>
-      {camper.transmission && (
-        <span className={styles.badge}>
-          <Icon name="diagram" width={20} height={20} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>{camper.transmission}</span>
-        </span>
-      )}
-      {camper.engine && (
-        <span className={styles.badge}>
-          <Icon name="fuel-pump" width={20} height={20} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>{camper.engine}</span>
-        </span>
-      )}
-      {camper.AC && (
-        <span className={styles.badge}>
-          <Icon name="wind" width={20} height={20} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>AC</span>
-        </span>
-      )}
-      {camper.kitchen && (
-        <span className={styles.badge}>
-          <Icon name="cup-hot" width={20} height={20} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>Kitchen</span>
-        </span>
-      )}
-      {camper.TV && (
-        <span className={styles.badge}>
-          <Icon name="tv" width={20} height={20} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>TV</span>
-        </span>
-      )}
-      {camper.bathroom && (
-        <span className={styles.badge}>
-          <Icon name="ph_shower" width={20} height={20} className={styles.badgeIcon} />
-          <span className={styles.badgeText}>Bathroom</span>
-        </span>
+      {FEATURE_BADGES.map(({ key, label, icon }) =>
+        camper[key] ? (
+          <span className={styles.badge} key={key}>
+            <Icon name={icon} width={20} height={20} className={styles.badgeIcon} />
+            <span className={styles.badgeText}>{label(camper[key])}</span>
+          </span>
+        ) : null
       )}
     </div>
     <div className={styles.vehicleDetails}>

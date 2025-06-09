@@ -1,20 +1,19 @@
 import React from 'react';
 import styles from './CamperFilters.module.css';
 import Icon from '../Icon/Icon';
-
-const equipmentOptions = [
-  { icon: <Icon name="wind" width={36} height={32} />, label: 'AC', value: 'ac' },
-  { icon: <Icon name="diagram" width={36} height={28} />, label: 'Automatic', value: 'automatic' },
-  { icon: <Icon name="cup-hot" width={36} height={32} />, label: 'Kitchen', value: 'kitchen' },
-  { icon: <Icon name="tv" width={36} height={28} />, label: 'TV', value: 'tv' },
-  { icon: <Icon name="ph_shower" width={35} height={33} />, label: 'Bathroom', value: 'bathroom' },
-];
+import FEATURE_BADGES from '../../helpers/featureBadges';
 
 const typeOptions = [
   { icon: <Icon name="bi_grid-1x2" width={32} height={32} />, label: 'Van', value: 'van', class:'' },
   { icon: <Icon name="bi_grid" width={40} height={32} />, label: 'Fully Integrated', value: 'fully-integrated', class: 'fullyIntegrated' },
   { icon: <Icon name="bi_grid-3x3-gap" width={40} height={32} />, label: 'Alcove', value: 'alcove', class:'' },
 ];
+
+// Filter only badges you want as equipment filters (e.g., boolean/string, not transmission/engine)
+const filterableBadges = FEATURE_BADGES.filter(
+  b =>
+    !['transmission', 'engine'].includes(b.key)
+);
 
 function CamperFilters({
   filters = {},
@@ -70,14 +69,15 @@ function CamperFilters({
         <div className={styles.filterGroup}>
           <p className={styles.filterTitle}>Vehicle equipment</p>
           <div className={styles.filterOptions}>
-            {equipmentOptions.map(opt => (
+            {filterableBadges.map(opt => (
               <button
-                key={opt.value}
-                className={`${styles.filterBtn} ${filters.equipment?.includes(opt.value) ? styles.active : ''}`}
-                onClick={() => handleEquipmentClick(opt.value)}
+                key={opt.key}
+                className={`${styles.filterBtn} ${filters.equipment?.includes(opt.key) ? styles.active : ''}`}
+                onClick={() => handleEquipmentClick(opt.key)}
                 type="button"
               >
-                {opt.icon} <span>{opt.label}</span>
+                <Icon name={opt.icon} width={36} height={32} />
+                <span>{typeof opt.label === 'function' ? opt.label() : opt.label}</span>
               </button>
             ))}
           </div>
