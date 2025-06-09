@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFilteredCampers,
@@ -30,8 +30,12 @@ const CampersPage = () => {
   const page = useSelector(selectCampersPage);
   const hasMore = useSelector(selectCampersHasMore);
 
+  // 1. Local state for filters
+  const [localFilters, setLocalFilters] = useState(filters);
+
   const prevFilters = useRef(filters);
 
+  // 2. Only fetch when Redux filters change (i.e. after Search)
   useEffect(() => {
     if (prevFilters.current !== filters) {
       dispatch(resetCampers());
@@ -43,8 +47,14 @@ const CampersPage = () => {
     // eslint-disable-next-line
   }, [dispatch, page, filters]);
 
-  const handleSetFilters = (newFilters) => {
-    dispatch(setCampersFilters(newFilters));
+  // 3. Update local filters on filter UI change
+  const handleLocalFiltersChange = (newFilters) => {
+    setLocalFilters((prev) => ({ ...prev, ...newFilters }));
+  };
+
+  // 4. On Search, update Redux filters (triggers fetch)
+  const handleSearch = () => {
+    dispatch(setCampersFilters(localFilters));
   };
 
   const handleLoadMore = () => {
@@ -53,7 +63,11 @@ const CampersPage = () => {
 
   return (
     <main className="main campers-page">
-      <CamperFilters filters={filters} setFilters={handleSetFilters} />
+      <CamperFilters
+        filters={localFilters}
+        setFilters={handleLocalFiltersChange}
+        onSearch={handleSearch}
+      />
       <section className={styles.results}>
         {status === "loading" && <Loader />}
         {error && <p>Error: {error}</p>}
