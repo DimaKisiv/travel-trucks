@@ -41,7 +41,7 @@
   background-color: #f7f7f7;
 }
 
-.textarea{
+.textarea {
   height: 118px;
 }
 
@@ -54,6 +54,7 @@
 .textarea {
   resize: vertical;
   min-height: 80px;
+  margin-bottom: 24px;
 }
 
 .submitBtn {
@@ -87,4 +88,169 @@
   color: #d32f2f;
   font-size: 0.95rem;
   margin-top: 0.2rem;
+}
+:global(.react-datepicker) {
+  width: 276px;
+  height: 284px;
+  border-radius: 12px;
+}
+/* Calendar root */
+
+/* Calendar popper (container for positioning) */
+:global(.react-datepicker__month-container) {
+  width: 100%;
+}
+
+/* Header (month, navigation) */
+:global(.react-datepicker__header) {
+  background: transparent;
+  border-color: #475467;
+  width: 100%;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  padding-top: 15px;
+}
+:global(
+    .react-datepicker__navigation-icon::before,
+    .react-datepicker__year-read-view--down-arrow,
+    .react-datepicker__month-read-view--down-arrow,
+    .react-datepicker__month-year-read-view--down-arrow
+  ) {
+  border-color: #475467;
+}
+
+/* Month name */
+:global(h2.react-datepicker__current-month) {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: #101828;
+  margin-bottom: 12px;
+}
+
+/* Navigation arrows */
+:global(.react-datepicker__navigation) {
+}
+:global(.react-datepicker__navigation--previous) {
+}
+:global(.react-datepicker__navigation--next) {
+}
+:global(.react-datepicker__navigation-icon) {
+}
+:global(.react-datepicker__navigation-icon--next) {
+}
+:global(.react-datepicker__navigation-icon--previous) {
+}
+
+/* Weekday row */
+:global(.react-datepicker__day-names) {
+  display: flex;
+}
+
+/* Single weekday name */
+:global(.react-datepicker__day-name) {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: #475467;
+  text-transform: uppercase;
+  width: 36px;
+}
+
+/* Month grid */
+:global(.react-datepicker__month) {
+}
+
+/* Week row */
+:global(.react-datepicker__week) {
+  display: flex;
+  width: 252;
+  height: 32;
+}
+
+/* Day cell */
+:global(.react-datepicker__day) {
+  border-color: #475467;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 36px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:global(.react-datepicker__day:hover) {
+  background-color: #f0f0f0;
+  border-radius: 32px !important;
+}
+
+/* Selected day */
+:global(.react-datepicker__day--selected) {
+  background: #475467;
+  color: #fff;
+  border-radius: 32px;
+  width: 36px;
+  height: 32px;
+}
+
+/* Today */
+:global(.react-datepicker__day--today) {
+  border: 0;
+  color: #101828;
+  background: #f0f0f0 !important;
+  border-radius: 32px;
+}
+
+/* Keyboard selected day */
+:global(.react-datepicker__day--keyboard-selected) {
+  background-color: #475467;
+}
+
+/* Outside current month */
+:global(.react-datepicker__day--outside-month) {
+}
+
+/* Disabled day */
+:global(.react-datepicker__day--disabled) {
+}
+
+/* Range start/end (if using range picker) */
+:global(.react-datepicker__day--range-start) {
+}
+:global(.react-datepicker__day--range-end) {
+}
+
+/* Highlighted day */
+:global(.react-datepicker__day--highlighted) {
+}
+
+/* Triangle pointer (default, can be hidden) */
+:global(.react-datepicker__triangle) {
+}
+
+/* Time picker (if enabled) */
+:global(.react-datepicker__time-container) {
+}
+:global(.react-datepicker__time) {
+}
+:global(.react-datepicker__time-box) {
+}
+:global(.react-datepicker__time-list) {
+}
+:global(.react-datepicker__time-list-item) {
+}
+
+/* Input field (if you want to style it globally) */
+:global(.react-datepicker__input-container) {
 }

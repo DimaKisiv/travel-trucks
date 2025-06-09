@@ -35,3 +35,7 @@
   letter-spacing: -0.08px;
   vertical-align: middle;
 }
+
+.loadMore:hover {
+  border-color: #D84343;
+}

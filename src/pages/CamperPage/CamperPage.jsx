@@ -13,6 +13,7 @@ import Gallery from "../../components/Gallery/Gallery";
 import Modal from "../../components/Modal/Modal";
 import FeaturesBox from "../../components/FeaturesBox/FeaturesBox";
 import Icon from "../../components/icon/icon";
+import Loader from "../../components/Loader/Loader";
 import styles from "./CamperPage.module.css";
 
 const CamperPage = () => {
@@ -32,7 +33,7 @@ const CamperPage = () => {
     }
   }, [dispatch, id]);
 
-  if (status === "loading") return <div>Loading...</div>;
+  if (status === "loading") return <Loader />;
   if (error) return <div>Error: {error}</div>;
   if (!camper) return <div>No camper found.</div>;
 
@@ -99,20 +100,18 @@ const CamperPage = () => {
         </button>
       </div>
 
-      {activeTab === "features" && (
-        <div className={styles.featuresTab}>
-          <FeaturesBox camper={camper} />
-          <div className={styles.featuresRight}>
-            <BookingForm />
-          </div>
+      <div className={styles.featuresTab}>
+        <div className={styles.featuresLeft}>
+          {activeTab === "features" ? (
+            <FeaturesBox camper={camper} />
+          ) : (
+            <Reviews reviews={camper.reviews} />
+          )}
         </div>
-      )}
-
-      {activeTab === "reviews" && (
-        <div className={styles.reviewsTab}>
-          <Reviews reviews={camper.reviews} />
+        <div className={styles.featuresRight}>
+          <BookingForm />
         </div>
-      )}
+      </div>
 
       {galleryOpen && (
         <Modal onClose={() => setGalleryOpen(false)}>

@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router';
 import { Provider } from 'react-redux';
 import Navigation from './components/Navigation/Navigation';
+import Loader from './components/Loader/Loader';
 import store from './redux/store';
 import styles from './App.module.css'; // Import CSS module for main layout
 
@@ -15,7 +16,7 @@ function App() {
       <Router>
         <Navigation />
         <main className={styles.main}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/campers" element={<CampersPage />} />

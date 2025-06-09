@@ -28,6 +28,7 @@ function Navigation() {
           <li>
             <NavLink
               to="/campers"
+              end
               className={({ isActive }) =>
                 isActive ? `${styles.navBtn} ${styles.active}` : styles.navBtn
               }

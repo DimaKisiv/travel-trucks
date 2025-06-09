@@ -1,35 +1,41 @@
-import React from 'react';
-import styles from './Reviews.module.css';
-import Icon from '../icon/icon'; // adjust path as needed
+import React from "react";
+import styles from "./Reviews.module.css";
+import Icon from "../icon/icon"; // adjust path as needed
 
 const getStars = (rating) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     stars.push(
-      i <= Math.round(rating)
-        ? <Icon key={i} name="rating-filled" size={18} />
-        : <Icon key={i} name="rating-empty" size={18} />
+      i <= Math.round(rating) ? (
+        <Icon key={i} name="rating-filled" width={16} height={16} />
+      ) : (
+        <Icon key={i} name="rating-empty" width={16} height={16} />
+      )
     );
   }
   return stars;
 };
 
 const Reviews = ({ reviews = [] }) => {
-  if (!reviews.length) return <div className={styles.noReviews}>No reviews yet.</div>;
+  if (!reviews.length)
+    return <div className={styles.noReviews}>No reviews yet.</div>;
 
   return (
     <div className={styles.reviews}>
-      <h3>Reviews</h3>
       <ul className={styles.reviewList}>
         {reviews.map((review, idx) => (
           <li key={idx} className={styles.reviewItem}>
-            <div className={styles.avatar}>
-              {review.reviewer_name?.[0]?.toUpperCase() || '?'}
-            </div>
             <div className={styles.reviewContent}>
               <div className={styles.header}>
-                <span className={styles.author}>{review.reviewer_name}</span>
-                <span className={styles.stars}>{getStars(review.reviewer_rating)}</span>
+                <div className={styles.avatar}>
+                  {review.reviewer_name?.[0]?.toUpperCase() || "?"}
+                </div>
+                <span className={styles.author}>
+                  {review.reviewer_name}
+                  <span className={styles.stars}>
+                    {getStars(review.reviewer_rating)}
+                  </span>
+                </span>
               </div>
               <div className={styles.text}>{review.comment}</div>
             </div>

@@ -1,5 +1,7 @@
 .reviews {
-  margin-top: 2rem;
+  margin-top: 12px;
+  max-height: 590px;
+  overflow-y: auto;
 }
 
 .reviewList {
@@ -11,24 +13,27 @@
 .reviewItem {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
-  background: #f8f8f8;
   border-radius: 8px;
-  padding: 1rem;
+  margin-bottom: 44px;
+}
+
+.reviewItem:last-child {
+  margin-bottom: 0;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
-  background: #007bff;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  background: #f2f4f7;
+  color: #e44848;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
   flex-shrink: 0;
 }
 
@@ -39,22 +44,30 @@
 .header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.3rem;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .author {
-  font-weight: bold;
-  font-size: 1.1rem;
+  color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
 }
 
 .stars {
-  color: #ffc107;
-  font-size: 1.1rem;
+  display: flex;
+  margin-top: 4px;
+
 }
 
 .text {
-  color: #333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #475467;
 }
 
 .noReviews {

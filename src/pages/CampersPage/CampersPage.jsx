@@ -15,6 +15,7 @@ import {
 import { fetchCampers } from "../../redux/operations";
 import CamperFilters from "../../components/CamperFilters/CamperFilters";
 import CampersList from "../../components/CampersList/CampersList";
+import Loader from "../../components/Loader/Loader";
 import styles from "./CampersPage.module.css";
 
 const LIMIT = 10;
@@ -54,6 +55,7 @@ const CampersPage = () => {
     <main className="main">
       <CamperFilters filters={filters} setFilters={handleSetFilters} />
       <section className={styles.results}>
+        {status === "loading" && <Loader />}
         {error && <p>Error: {error}</p>}
         <CampersList campers={campers} status={status} />
         {hasMore && (
@@ -62,7 +64,7 @@ const CampersPage = () => {
             onClick={handleLoadMore}
             disabled={isLoadingMore}
           >
-            {isLoadingMore ? "Loading..." : "Load More"}
+            {isLoadingMore ? <Loader /> : "Load More"}
           </button>
         )}
       </section>

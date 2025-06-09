@@ -85,6 +85,7 @@ const BookingForm = () => {
           dateFormat="yyyy-MM-dd"
           className={styles.input}
           required
+          formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 3)}
         />
         {touched.bookingDate && errors.bookingDate && <span className={styles.error}>Booking date is required</span>}
         <textarea

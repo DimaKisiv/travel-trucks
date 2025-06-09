@@ -2,6 +2,15 @@ import React from 'react';
 import styles from './FeaturesBox.module.css';
 import Icon from '../Icon/Icon';
 
+const VEHICLE_DETAILS = [
+  { label: 'Type', key: 'form' },
+  { label: 'Length', key: 'length' },
+  { label: 'Width', key: 'width' },
+  { label: 'Height', key: 'height' },
+  { label: 'Tank', key: 'tank' },
+  { label: 'Consumption', key: 'consumption' },
+];
+
 const FeaturesBox = ({ camper }) => (
   <div className={styles.featuresSection}>
     <div className={styles.features}>
@@ -44,34 +53,12 @@ const FeaturesBox = ({ camper }) => (
     </div>
     <div className={styles.vehicleDetails}>
       <h3>Vehicle details</h3>
-      <table>
-        <tbody>
-          <tr>
-            <td>Type</td>
-            <td>{camper.form}</td>
-          </tr>
-          <tr>
-            <td>Length</td>
-            <td>{camper.length}</td>
-          </tr>
-          <tr>
-            <td>Width</td>
-            <td>{camper.width}</td>
-          </tr>
-          <tr>
-            <td>Height</td>
-            <td>{camper.height}</td>
-          </tr>
-          <tr>
-            <td>Tank</td>
-            <td>{camper.tank}</td>
-          </tr>
-          <tr>
-            <td>Consumption</td>
-            <td>{camper.consumption}</td>
-          </tr>
-        </tbody>
-      </table>
+      {VEHICLE_DETAILS.map(({ label, key }) => (
+        <div className={styles.detailsRow} key={key}>
+          <span className={styles.detailsName}>{label}</span>
+          <span className={styles.detailsValue}>{camper[key]}</span>
+        </div>
+      ))}
     </div>
   </div>
 );

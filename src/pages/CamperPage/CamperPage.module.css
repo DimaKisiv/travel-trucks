@@ -8,12 +8,14 @@
 .tabs {
   display: flex;
   gap: 1rem;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 44px;
+  border-bottom: 1px solid #dadde1;
 }
 
 .tabs button {
-  color:#101828;
-  border:0;
+  color: #101828;
+  border: 0;
   cursor: pointer;
   font-weight: 600;
   font-size: 20px;
@@ -42,14 +44,12 @@
 
 .featuresTab {
   display: flex;
-  gap: 2rem;
+  gap: 40px;
   margin-bottom: 2rem;
 }
 
 .featuresLeft {
-  background: #f8f8f8;
   border-radius: 8px;
-  padding: 1.5rem;
   flex: 1;
   max-width: 631px;
 }
@@ -141,6 +141,7 @@
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0;
+  margin-left: 4px;
 }
 
 .stars {
