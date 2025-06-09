@@ -37,6 +37,13 @@ function CamperFilters({
     setFilters({ ...filters, location: e.target.value });
   };
 
+  const handleLocationKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSearch();
+    }
+  };
+
   const handleEquipmentClick = (value) => {
     const eq = filters.equipment || [];
     setFilters({
@@ -77,6 +84,7 @@ function CamperFilters({
             placeholder="City"
             value={filters.location || ""}
             onChange={handleLocationChange}
+            onKeyDown={handleLocationKeyDown}
           />
         </div>
       </div>
